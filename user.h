@@ -1,18 +1,44 @@
 #ifndef BOOKMANAGE_USER_H
 #define BOOKMANAGE_USER_H
+#include <cstring>
+#include <utility>
 
+using namespace std;
 
 class User {
 private:
-    char * id;
-    char * pw;
-    char * name;
-    char phone[11];
+    string id;
+    string pw;
+    string name;
+    string phone;
 public:
-    User() {
-        // empty
+    User(string userid, string userpw, string username, string userphone) {
+        id = move(userid);
+        pw = move(userpw);
+        name = move(username);
+        phone = move(userphone);
     }
-    void setID
+    User(){
+        id = "";
+        pw = "";
+        name = "";
+        phone = "";
+    }
+    string getID() {
+        return id;
+    }
+    string getPW() {
+        return pw;
+    }
+    string getName() {
+        return name;
+    }
+    string getPhone() {
+        return phone;
+    }
+    void changePW(string newpw) {
+        pw = move(newpw);
+    }
 };
 
 
